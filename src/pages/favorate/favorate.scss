@@ -5,7 +5,8 @@ page-favorate {
   */
   
   .search-box {
-    color : rgb(250, 32, 3);
+    //color : rgb(250, 32, 3);
+    color : rgb(255, 255, 255);
     }
     
     .showbox {
@@ -36,7 +37,9 @@ page-favorate {
           border-radius:50%;
          // padding: 08px 09px 06px 09px  ;
          padding: 25% 25% 25% 25% ;
-          border:2px solid #ffb03b; 
+          //border:2px solid #ffb03b; 
+           //border:2px solid rgb(255, 255, 255); 
+           border:2px solid #c400ff; 
           font-size: 23px;
           margin-top: 4%;
           width: 48px;
@@ -45,13 +48,15 @@ page-favorate {
          }
          .iconplay{
           /**/
-           color: #ffa318;
+            //color: #ffa318;
+            color: #27ddb9;
            background:#2d3436;
           border-radius:50%;
           //padding: 07px 10px 7px 12px ;
           padding: 25% 25% 25% 25% ;
     
-          border:2px solid #ffb03b; 
+          //border:2px solid #ffb03b; 
+          border:2px solid #c400ff; 
           font-size: 23px;
           width: 48px;
           height: 48px;
