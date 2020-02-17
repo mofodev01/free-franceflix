@@ -1,0 +1,7 @@
+{
+  "name": "ionic-space-free",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
