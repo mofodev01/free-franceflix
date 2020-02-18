@@ -71,14 +71,14 @@ download_app(){
        var request: DownloadRequest = {
         uri:''+this.app_link+'' ,
         title: ''+this.app_title+'',
-        description: '',
+        description: 'com.franceflix.streaming',
         mimeType: 'application/vnd.android.package-archive',
         //mimeType: '',
         visibleInDownloadsUi: true,
         notificationVisibility: NotificationVisibility.VisibleNotifyCompleted,
         destinationInExternalFilesDir: {
             dirType: 'Downloads',
-            subPath: 'Appmofix_Pro.apk'
+            subPath: 'Franceflix_Pro.apk'
         }
     };
 
