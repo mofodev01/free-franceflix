@@ -23,7 +23,7 @@ $app-direction: ltr;
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 //https://stackoverflow.com/questions/44065099/how-can-i-change-the-color-of-the-ion-title
 
-$toolbar-background: #0e1516;
+$toolbar-background: #122342;
 /*
 $toolbar-md-title-text-color: rgb(250, 32, 3);
 $toolbar-ios-title-text-color: rgb(250, 32, 3);
@@ -34,9 +34,9 @@ $searchbar-ios-input-text-color: #0e1516;
 $searchbar-ios-input-search-icon-color: #0e1516;
 $searchbar-ios-toolbar-input-background: #fff;
 
-$toolbar-md-title-text-color: rgb(255, 255, 255);
-$toolbar-ios-title-text-color: rgb(255, 255, 255);
-$toolbar-wp-title-text-color: rgb(255, 255, 255);
+$toolbar-md-title-text-color: #f4f4f4;
+$toolbar-ios-title-text-color: #f4f4f4;
+$toolbar-wp-title-text-color: #f4f4f4;
 ///https://ionicframework.com/docs/api/components/searchbar/Searchbar/#sass-variables
 ///$searchbar-md-input-background-color : rgb(250, 32, 3);
 ///$searchbar-ios-background-color: rgb(253, 250, 250);
@@ -45,15 +45,15 @@ $toolbar-wp-title-text-color: rgb(255, 255, 255);
 // Use the default background for the tabbar since it inherits from toolbar
 $tabbar-md-background:                    #0e1516;
 
+
 // Change the color of the tabs text
 $tab-button-md-active-color:              rgb(250, 32, 3);
 $tab-button-md-inactive-color:            #8c8c8c;
 
 // Change the color of the segment button text
-$toolbar-md-active-color:                 rgb(250, 32, 3);
-$toolbar-md-inactive-color:               rgb(250, 32, 3);
-$segment-button-md-text-color-activated:  rgb(250, 32, 3);
-
+$toolbar-md-active-color:                 #f4f4f4;
+$toolbar-md-inactive-color:               #f4f4f4;
+$segment-button-md-text-color-activated:  #f4f4f4;
 
 // Named Color Variables
 // --------------------------------------------------
@@ -64,12 +64,14 @@ $segment-button-md-text-color-activated:  rgb(250, 32, 3);
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #C400FF,
+  primary:    #eb2f06,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
-  green-sea:  #16a085
+  green-sea:  #b71540,
+  blue-toolbar:#122342,
+  blue : #0c2461
 );
 
 

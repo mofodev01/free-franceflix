@@ -61,9 +61,9 @@ download_app(){
               .subscribe(res => {
        
        
-       this.app_link=res[0].appmofix_pro;
+       this.app_link=res[0].franceflix_pro;
        console.log(this.app_link);
-       this.app_title=res[0].appmofix_title;
+       this.app_title=res[0].franceflix_title;
        console.log(this.app_title);
 
 

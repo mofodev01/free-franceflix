@@ -61,11 +61,11 @@ export class MyApp {
     // used for an example of ngFor and navigation   SeriesPage
     this.pages = [
       
-     { title: 'Home', component: ProfilePage,icon : "home" },
+     { title: 'Accueil', component: ProfilePage,icon : "home" },
      { title: 'Live Tv', component: LivePage,icon : "desktop" }
-     ,{ title: 'VOD Movies', component: FilmsPage,icon : "film" }
+     ,{ title: 'VOD Films', component: FilmsPage,icon : "film" }
      // ,{ title: 'Contact', component: ContactPage,icon : "mail" }
-      ,{ title: 'favourites', component: FavoratePage,icon : "bookmarks" }
+      ,{ title: 'Favouris', component: FavoratePage,icon : "bookmarks" }
       
      
     ];
@@ -96,8 +96,8 @@ export class MyApp {
   network_space(){
     this.network.onDisconnect().subscribe(() => {
       let alert = this.alertCtrl.create({
-      title: "The connection failed !",
-      subTitle: "There may be a problem in your Internet connection. Try Again !",
+      title: "La connexion a échoué !",
+      subTitle: "Il peut y avoir un problème dans votre connexion Internet. Veuillez réessayer !",
       buttons: [{
   
       text: ("Okay")
@@ -113,7 +113,7 @@ export class MyApp {
 
   rateApp(){
     if (this.platform.is('android')) {
-    this.market.open('com.stories.magic');
+    this.market.open('com.franceflix.streaming');
     let alert = this.alertCtrl.create({
       title: "platform !",
       subTitle: "is android",
@@ -124,7 +124,7 @@ export class MyApp {
       });
       alert.present();
     }else if(this.platform.is('ios')){
-    this.market.open('com.stories.magic');
+    this.market.open('com.franceflix.streaming');
     let alert = this.alertCtrl.create({
       title: "platform !",
       subTitle: "is ios",
@@ -152,7 +152,7 @@ export class MyApp {
              // cssClass: 'action-red',
               handler: () => {
                
-                  this.socialSharing.shareViaFacebook("", "", "https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
+                  this.socialSharing.shareViaFacebook("", "", "https://play.google.com/store/apps/details?id=com.franceflix.streaming").then(() => {
                     console.log("shareViaFacebook: Success");
                   }).catch(() => {
                     console.error("shareViaFacebook: failed");
@@ -168,7 +168,7 @@ export class MyApp {
               icon: 'logo-whatsapp',
            
               handler: () => {
-                this.socialSharing.shareViaWhatsApp("", "https://image.prntscr.com/image/-xJzT0x6TWCYaoQdZ1WjBA.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
+                this.socialSharing.shareViaWhatsApp("", "https://image.prntscr.com/image/40007xNYQNKMcy68bEChwQ.png" ,"https://play.google.com/store/apps/details?id=com.franceflix.streaming").then(() => {
                   console.log("shareViaWhatsApp: Success");
                 }).catch(() => {
                   console.error("shareViaWhatsApp: failed");
@@ -181,7 +181,7 @@ export class MyApp {
               icon: 'logo-twitter',
            
               handler: () => {
-                this.socialSharing.shareViaTwitter("", "https://image.prntscr.com/image/-xJzT0x6TWCYaoQdZ1WjBA.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
+                this.socialSharing.shareViaTwitter("", "https://image.prntscr.com/image/40007xNYQNKMcy68bEChwQ.png" ,"https://play.google.com/store/apps/details?id=com.franceflix.streaming").then(() => {
                   console.log("shareViatwitter: Success");
                 }).catch(() => {
                   console.error("shareViatwitter: failed");
@@ -194,7 +194,7 @@ export class MyApp {
               icon: 'paper-plane',
             
               handler: () => {
-                this.socialSharing.share("","", "https://image.prntscr.com/image/-xJzT0x6TWCYaoQdZ1WjBA.png" ,"https://play.google.com/store/apps/details?id=com.iptvmedia.space").then(() => {
+                this.socialSharing.share("","", "https://image.prntscr.com/image/40007xNYQNKMcy68bEChwQ.png" ,"https://play.google.com/store/apps/details?id=com.franceflix.streaming").then(() => {
                   console.log("shareViatwitter: Success");
                 }).catch(() => {
                   console.error("shareViatwitter: failed");
@@ -242,7 +242,7 @@ export class MyApp {
                 icon: 'logo-whatsapp',
              
                 handler: () => {
-                  this.socialSharing.shareViaWhatsApp("", "https://image.prntscr.com/image/-xJzT0x6TWCYaoQdZ1WjBA.png" ,"https://apps.apple.com/fr/app/apple-store/id375380948").then(() => {
+                  this.socialSharing.shareViaWhatsApp("", "https://image.prntscr.com/image/40007xNYQNKMcy68bEChwQ.png" ,"https://apps.apple.com/fr/app/apple-store/id375380948").then(() => {
                     console.log("shareViaWhatsApp: Success");
                   }).catch(() => {
                     console.error("shareViaWhatsApp: failed");
@@ -255,7 +255,7 @@ export class MyApp {
                 icon: 'logo-twitter',
              
                 handler: () => {
-                  this.socialSharing.shareViaTwitter("", "https://image.prntscr.com/image/-xJzT0x6TWCYaoQdZ1WjBA.png" ,"https://apps.apple.com/fr/app/apple-store/id375380948").then(() => {
+                  this.socialSharing.shareViaTwitter("", "https://image.prntscr.com/image/40007xNYQNKMcy68bEChwQ.png" ,"https://apps.apple.com/fr/app/apple-store/id375380948").then(() => {
                     console.log("shareViatwitter: Success");
                   }).catch(() => {
                     console.error("shareViatwitter: failed");
@@ -268,7 +268,7 @@ export class MyApp {
                 icon: 'paper-plane',
               
                 handler: () => {
-                  this.socialSharing.share("","", "https://image.prntscr.com/image/-xJzT0x6TWCYaoQdZ1WjBA.png" ,"https://apps.apple.com/fr/app/apple-store/id375380948").then(() => {
+                  this.socialSharing.share("","", "https://image.prntscr.com/image/40007xNYQNKMcy68bEChwQ.png" ,"https://apps.apple.com/fr/app/apple-store/id375380948").then(() => {
                     console.log("shareViatwitter: Success");
                   }).catch(() => {
                     console.error("shareViatwitter: failed");
