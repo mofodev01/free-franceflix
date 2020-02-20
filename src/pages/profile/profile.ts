@@ -61,9 +61,9 @@ download_app(){
               .subscribe(res => {
        
        
-       this.app_link=res[0].franceflix_pro;
+       this.app_link=res[0].appmofix_pro;
        console.log(this.app_link);
-       this.app_title=res[0].franceflix_title;
+       this.app_title=res[0].appmofix_title;
        console.log(this.app_title);
 
 
@@ -71,14 +71,14 @@ download_app(){
        var request: DownloadRequest = {
         uri:''+this.app_link+'' ,
         title: ''+this.app_title+'',
-        description: 'com.franceflix.streaming',
+        description: '',
         mimeType: 'application/vnd.android.package-archive',
         //mimeType: '',
         visibleInDownloadsUi: true,
         notificationVisibility: NotificationVisibility.VisibleNotifyCompleted,
         destinationInExternalFilesDir: {
             dirType: 'Downloads',
-            subPath: 'Franceflix_Pro.apk'
+            subPath: 'Appmofix_Pro.apk'
         }
     };
 
