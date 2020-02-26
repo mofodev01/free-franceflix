@@ -3,7 +3,8 @@ import { NavController, NavParams,LoadingController,MenuController} from 'ionic-
 
 import { JsonDataProvider } from '../../providers/json-data/json-data';
 
-import { DetailPage } from '../detail/detail'
+//import { DetailPage } from '../detail/detail'
+import { DetailFreeLivePage } from '../detail-free-live/detail-free-live'
 
 @Component({
   selector: 'page-liste-serve-live',
@@ -40,7 +41,7 @@ export class ListeServeLivePage {
 
      
     let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: 'Attendez...'
     });
   
     loading.present();
@@ -63,7 +64,7 @@ export class ListeServeLivePage {
     this.categorie = this.navParams.get('categorie');
     this.title = this.navParams.get('title'); 
 
-    this.navCtrl.push(DetailPage,{categorie: this.categorie,title: this.title,id: id});
+    this.navCtrl.push(DetailFreeLivePage,{categorie: this.categorie,title: this.title,id: id});
   }
 
 }

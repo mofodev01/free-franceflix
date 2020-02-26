@@ -73,7 +73,7 @@ GetAllUser(){
 
  ///-------------------------------
  let loading = this.loadingCtrl.create({
-  content: 'Please wait...'
+  content: 'Attendez...'
 });
 
 loading.present();

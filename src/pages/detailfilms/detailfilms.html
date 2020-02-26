@@ -39,15 +39,15 @@
 <ion-grid >
     <ion-row>
       <ion-col class="showbox" col-3 col-md-4 col-xl-3 *ngFor="let c of countries | slice:0:limit | search : terms | sort: {property: column, order: order}">
-        
-        <img src="{{c.tvlogo}}" onerror="this.src='assets/imgs/icon.png'" class="img" >
+        <!-- src-fallback="{{ placeholder }}"-->
+        <img src="{{c.tvlogo}}" onerror="this.src='assets/imgs/icon.png'"  class="img" >
   
          
                           
             <div class="middle">
         
                 <div> 
-                   <ion-icon class="iconplay"  (click)="startVideo(c.tvmedia)"  name="play"></ion-icon>
+                   <ion-icon class="iconplay"   (click)="startVideo(c.tvmedia)"  name="play"></ion-icon>
                 </div>
 
                 <div> 
@@ -57,7 +57,7 @@
             </div>
        
                 <div class="container">   
-                    <p  style="font-weight:bold; text-align: center ; width:60px; font-size: 6px; color:#27ddb9;">{{c.tvname}}</p>
+          <p  style="font-weight:bold; text-align: center ; width:60px; font-size: 6px; color:#f4f4f4;">{{c.tvname}}</p>
                 </div>     
          
       </ion-col>

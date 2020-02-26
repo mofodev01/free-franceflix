@@ -1,132 +1,90 @@
-import { Component , ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, NavParams , AlertController,MenuController/**/} from 'ionic-angular';
 
-//import { LoginPage } from '../login/login';
+
 import { LoadingController } from 'ionic-angular';
 
 import { HttpClient,HttpHeaders  } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
+import { EmailComposer } from '@ionic-native/email-composer';
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html',
 })
 export class ContactPage {
- // @ViewChild("username") username;
-  @ViewChild("subject") subject;
-  @ViewChild("message") message;
+  items:any;
   data_storage:any;
+
+  to='';
+  subjet='';
+  body='';
   
   constructor(public navCtrl: NavController, public navParams: NavParams,
      public alertCtrl: AlertController,  private http: HttpClient,  public loading: LoadingController
      ,public storage: Storage
      ,public menuCtrl:MenuController
+     ,private emailComposer: EmailComposer
     ) {
       this.menuCtrl.enable(true)
   }
-
-  protected adjustTextarea(event: any): void {
-    let textarea: any		= event.target;
-    textarea.style.overflow = 'hidden';
-    textarea.style.height 	= 'auto';
-    textarea.style.height 	= textarea.scrollHeight + 'px';
-    return;
-  }
-
-  Register(){
-    //// check to confirm the username, email, telephone and password fields are filled
-   
-    
-    if(this.subject.value==""){
-   
-    let alert = this.alertCtrl.create({
-   
-    title:"Warning",
-    subTitle:"subject field is empty",
-    buttons: ['OK']
-    });
-   
-    alert.present();
-         
-   }
-    else 
-     if(this.message.value=="" ){
-   
-    let alert = this.alertCtrl.create({
-   
-    title:"Warning",
-    subTitle:"message field is empty",
-    buttons: ['OK']
-    });
-   
-    alert.present();
-     } 
-   
-    else 
-    {
-   //--------------------------
-      this.storage.get("session_storage").then((res)=>{
-        this.data_storage=res;
-        
-        console.log(this.data_storage);
-   //--------------------------
+  ionViewWillEnter(){
   
-   
-      let httpHeaders = new HttpHeaders({
-        'Content-Type' : 'application/json',
-        'Cache-Control': 'no-cache'
-           });    
-           let options = {
-        headers: httpHeaders
-           };
-   
-     let data = {
-           username: this.data_storage,
-           subject: this.subject.value,
-           message: this.message.value     
-         };
+    this.storage.get("session_storage").then((res)=>{
+     this.data_storage=res;
+     
+     console.log(this.data_storage);
+/**----------------------------------------- */
+let httpHeaders = new HttpHeaders({
+  'Content-Type' : 'application/json',
+  'Cache-Control': 'no-cache'
+     });    
+     let options = {
+  headers: httpHeaders
+     };
+/**----------------------------------------- */    
+  
+this.http.get('http://space.appmofix.com/api/fetch_user.php?username='+this.data_storage,options)
 
-
-   
-    let loader = this.loading.create({
-       content: 'Processing please wait...',
-     });
-   
-    loader.present().then(() => {
-   this.http.post('http://space-free.iptvmedia.me/api/contact.php',data, options)
-   .map(res => res.toString())
    .subscribe(res => {
    
-    loader.dismiss()
-   if(res=="Message Saved"){
-     let alert = this.alertCtrl.create({
-       title:"Congratulation",
-       subTitle:(res),
-       buttons: ['OK']
-       });
-      
-       alert.present();
-    //this.navCtrl.push(LoginPage);
    
-   }else
-   {
-    let alert = this.alertCtrl.create({
-    title:"Error",
-    subTitle:(res),
-    buttons: ['OK']
-    });
+   this.items=res;
    
-    alert.present();
-     } 
-   });
+   console.log(this.items);
    });
 
 
-//--------------------------
-})   
-//-------------------------- 
-
+///-----
+})
+///-----
 
     }
+
+send_email(){
+
+  this.emailComposer.isAvailable().then((available: boolean) =>{
+    if(available) {
+      //Now we know we can send
+    }
+   });
    
-   }
+   let email = {
+     to: 'sup.media.iptv@gmail.com',//sup.media.iptv@gmail.com
+     cc: [],
+     bcc: [],
+     attachments: [],
+    
+     subject: this.subjet,
+     body: this.body,
+     isHtml: true,
+     app: "Gmail"
+   };
+   
+   // Send a text message using default options
+   this.emailComposer.open(email);
+
+}
+
+
+  
 }

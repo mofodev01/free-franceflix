@@ -3,7 +3,8 @@ import { NavController, NavParams,LoadingController,MenuController} from 'ionic-
 
 import { JsonDataProvider } from '../../providers/json-data/json-data';
 
-import { DetailfilmsPage } from '../detailfilms/detailfilms'
+//import { DetailfilmsPage } from '../detailfilms/detailfilms'
+import { DetailFreeFilmsPage } from '../detail-free-films/detail-free-films'
 
 @Component({
   selector: 'page-liste-server-films',
@@ -40,7 +41,7 @@ export class ListeServerFilmsPage {
 
      
     let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: 'Attendez...'
     });
   
     loading.present();
@@ -63,7 +64,8 @@ export class ListeServerFilmsPage {
     this.categorie = this.navParams.get('categorie');
     this.title = this.navParams.get('title'); 
 
-    this.navCtrl.push(DetailfilmsPage,{categorie: this.categorie,title: this.title,id: id});
+    //this.navCtrl.push(DetailfilmsPage,{categorie: this.categorie,title: this.title,id: id});
+    this.navCtrl.push(DetailFreeFilmsPage,{categorie: this.categorie,title: this.title,id: id});
   }
 
 }

@@ -3,10 +3,11 @@ import { NavController, NavParams,Platform,LoadingController,MenuController} fro
 import { Storage } from '@ionic/storage';
 import { JsonDataProvider } from '../../providers/json-data/json-data';
 
+
 import { DatabaseProvider } from '../../providers/database/database';
 import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 import { Toast } from '@ionic-native/toast';
-//import { AdMobFree, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';
+
 @Component({
   selector: 'page-detailfilms',
   templateUrl: 'detailfilms.html',
@@ -14,7 +15,6 @@ import { Toast } from '@ionic-native/toast';
 export class DetailfilmsPage {
   title:any;
   categorie:any;
-  id:any;
   countries: any;
   data_storage:any;
   errorMessage: string;
@@ -25,6 +25,7 @@ export class DetailfilmsPage {
   descending: boolean = false;
 order: number;
 column: string = 'tvname';
+placeholder = "https://image.prntscr.com/image/40007xNYQNKMcy68bEChwQ.png";
 /*----------------------------*/
 
   ListUser = [];
@@ -33,7 +34,7 @@ column: string = 'tvname';
     ,public JsonDataProvider: JsonDataProvider, public loadingCtrl: LoadingController
     ,public storage: Storage,private database: DatabaseProvider,
     public platform: Platform,private toast: Toast,private streamingMedia: StreamingMedia
-    ,public menuCtrl:MenuController /*,private admobFree: AdMobFree*/
+    ,public menuCtrl:MenuController
     ) {
       this.menuCtrl.enable(true)
      this.categorie = this.navParams.get('categorie'); 
@@ -42,16 +43,18 @@ column: string = 'tvname';
   }
 
   ionViewDidLoad() {
-   /**-----------------test user and cat-------------------- */
-   this.categorie = this.navParams.get('categorie');
-   console.log(this.categorie);
-   this.title = this.navParams.get('title'); 
-   console.log(this.title);
-   this.id = this.navParams.get('id'); 
-   console.log(this.id);
+    /**-----------------test user and cat-------------------- */
+    this.categorie = this.navParams.get('categorie');
+    console.log(this.categorie);
+    this.title = this.navParams.get('title'); 
+    console.log(this.title);
 
- 
-   /**-----------------test user and cat-------------------- */
+    this.storage.get("session_storage").then((res)=>{
+      this.data_storage=res;
+      
+      console.log(this.data_storage);
+    });
+    /**-----------------test user and cat-------------------- */
   }
 
   ngOnInit() {
@@ -62,21 +65,25 @@ column: string = 'tvname';
 
      
     let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: 'Attendez...'
     });
   
     loading.present();
 
    /**----------------------------------------- */
   
+      this.storage.get("session_storage").then((res)=>{
+       this.data_storage=res;
+       
+       console.log(this.data_storage);
+ /**----------------------------------------- */
 
- this.categorie = this.navParams.get('categorie');
-  console.log(this.categorie);
-  this.id = this.navParams.get('id'); 
+    this.categorie = this.navParams.get('categorie');
+    console.log(this.categorie);
     
   /**----------------------------------------- */
 
-    this.JsonDataProvider.getFilms(this.id,this.categorie)
+    this.JsonDataProvider.getFilms(this.data_storage,this.categorie)
              .subscribe(
                countries =>{
                  this.countries = countries 
@@ -87,7 +94,9 @@ column: string = 'tvname';
                     loading.dismiss();
                         });
 
-        
+         ///-----
+              })
+         ///-----
   
    }
 
@@ -137,7 +146,7 @@ startVideo(url) {
               })
 
 
-              this.toast.show('successfully added', '5000', 'center').subscribe(
+              this.toast.show('ajouté avec succès', '5000', 'center').subscribe(
                 toast => {
                   console.log(toast);
                 }
@@ -167,39 +176,5 @@ startVideo(url) {
               refresher.complete();
              }, 2000);
          }
-        /* launchInterstitial() {
-          if (this.platform.is('android')) {
-          const interstitialConfig: AdMobFreeInterstitialConfig = {
-                  isTesting: true,// Remove in production
-                  autoShow: true,
-              //id: Your Ad Unit ID goes here
-             //id:'ca-app-pub-3000905870244951/5491408793'
-          };
-        
-          this.admobFree.interstitial.config(interstitialConfig);
-        
-          
-          this.admobFree.interstitial.prepare().then(() => {
-              // success
-              
-          });
-        
-          }else if (this.platform.is('ios')) {
-            const interstitialConfig: AdMobFreeInterstitialConfig = {
-              isTesting: true,// Remove in production
-              autoShow: true,
-          //id: Your Ad Unit ID goes here
-         //id:'ca-app-pub-3000905870244951/5491408793'
-        };
-        
-        this.admobFree.interstitial.config(interstitialConfig);
-        
-        
-        this.admobFree.interstitial.prepare().then(() => {
-          // success
-          
-        });
-        
-          }
-         }*/
+
 }
